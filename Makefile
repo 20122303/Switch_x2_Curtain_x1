@@ -57,7 +57,7 @@ LIST_OF_LIBRARY:=\
 LIBRARY_DEFAULT:=slave_enhanced_232
 #---------------------------------------------------------------------------------------------------------
 # If not supplied by application here, the name of the application will be set equal to it's directory name.
-APP_NAME:=TOUCH_SWITCH_X2_CURTAIN_X1_V240
+APP_NAME:=TOUCH_SWITCH_X2_CURTAIN_X1_V241
 #---------------------------------------------------------------------------------------------------------
 # List of all application modules.
 RELFILES:=\

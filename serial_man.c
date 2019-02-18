@@ -68,13 +68,13 @@ SerialSetValue(
     BYTE byValue,
     BYTE byEndpoint
 ) {
-    if (0 == byEndpoint) {
-        g_bTxBuffer[0] = 1;
+    if (byEndpoint <= 1) {
+        g_bTxBuffer[0] = 2;
         g_bTxBuffer[1] = DEVICE_CONTACT;
         g_bTxBuffer[2] = ConvertValueZwToMcu(byValue, DEVICE_CONTACT);
         SendTxData(CMD_SET_CTRL, g_bTxBuffer, LENGTH_SINGLE_CMD_SET_CTRL);
-    } else {
-        g_bTxBuffer[0] = byEndpoint;
+    } else if (byEndpoint == 2) {
+        g_bTxBuffer[0] = 3;
         g_bTxBuffer[1] = DEVICE_CONTACT;
         g_bTxBuffer[2] = ConvertValueZwToMcu(byValue, DEVICE_CONTACT);
         SendTxData(CMD_SET_CTRL, g_bTxBuffer, LENGTH_SINGLE_CMD_SET_CTRL);

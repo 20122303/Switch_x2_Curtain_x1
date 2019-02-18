@@ -32,9 +32,9 @@ HandleCurtain(
     case STATE_RUN:
         byValue = ConvertValueMcuToZw(pCmd->lumi_curtain.level, DEVICE_CURTAIN);
 
-		if ((pCmd->lumi_curtain.no - INDEX_CURTAIN_BASE) < NUMBER_OF_CURTAIN ) {
-            g_byValue[pCmd->lumi_curtain.no - INDEX_CURTAIN_BASE] = byValue;
-            HandleCurtainLevel(byValue, pCmd->lumi_curtain.no);
+		if (pCmd->lumi_curtain.no == 1) {
+            g_byValue[0] = byValue;
+            HandleCurtainLevel(byValue, 3);
         }
         break;
     }
@@ -51,8 +51,8 @@ SetCurtainLevel(
     BYTE byLevel,
     BYTE byEndpoint
 ) {
-	if ((byEndpoint - INDEX_CURTAIN_BASE) < NUMBER_OF_CURTAIN ) {
-        g_byTxBuffer[0] = byEndpoint; 
+	if (byEndpoint == 3 ) {
+        g_byTxBuffer[0] = 1; 
         g_byTxBuffer[1] = DEVICE_CURTAIN;
         g_byTxBuffer[2] = STATE_RUN;
         g_byTxBuffer[3] = ConvertValueZwToMcu(byLevel, DEVICE_CURTAIN);
@@ -71,8 +71,8 @@ BYTE
 GetCurtainLevel(
     BYTE byEndpoint
 ) {
-	if ((byEndpoint - INDEX_CURTAIN_BASE) < NUMBER_OF_CURTAIN ) {
-		return g_byValue[byEndpoint - INDEX_CURTAIN_BASE];
+	if (byEndpoint == 3) {
+		return g_byValue[0];
 	}
 	else {
         return 0;
@@ -89,8 +89,8 @@ void
 StopCurtain(
     BYTE byEndpoint
 ) {
-	if ((byEndpoint - INDEX_CURTAIN_BASE) < NUMBER_OF_CURTAIN ) {
-	    g_byTxBuffer[0] = byEndpoint;
+	if (byEndpoint == 3) {
+	    g_byTxBuffer[0] = 1;
         g_byTxBuffer[1] = DEVICE_CURTAIN;
         g_byTxBuffer[2] = STATE_STOP;
         g_byTxBuffer[3] = 0; // Don't care

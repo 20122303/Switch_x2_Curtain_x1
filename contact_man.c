@@ -73,8 +73,8 @@ HandleContact(
     BYTE byValue = 0;
     UNUSED(byLength);
 
-	if ((pCmd->lumi_contact.no - INDEX_SWITCH_BASE) < NUMBER_OF_SWITCH )
-		HandleContactLevel(ConvertValueMcuToZw(pCmd->lumi_contact.val, DEVICE_CONTACT), pCmd->lumi_contact.no);
+	if ((pCmd->lumi_contact.no - 1 - INDEX_SWITCH_BASE) < NUMBER_OF_SWITCH )
+		HandleContactLevel(ConvertValueMcuToZw(pCmd->lumi_contact.val, DEVICE_CONTACT), pCmd->lumi_contact.no - 1);
 }
 
 
