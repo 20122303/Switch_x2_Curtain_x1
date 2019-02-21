@@ -71,7 +71,7 @@
 #define APP_MANUFACTURER_ID             MFG_ID_HOME_CONTROLS
 
 #define APP_PRODUCT_TYPE_ID             PRODUCT_TYPE_ID_ZWAVE_PLUS
-#define APP_PRODUCT_ID                  PRODUCT_ID_Lumi_Curtain_Touch_x1_Switch_x2
+#define APP_PRODUCT_ID                  PRODUCT_ID_Lumi_Switch_x2_Curtain_Touch_x1
 
 #define APP_FIRMWARE_ID                 APP_PRODUCT_ID | (APP_PRODUCT_TYPE_ID << 8)
 
